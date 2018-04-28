@@ -38,7 +38,7 @@ public class DbManagerImpl implements DbManager {
 	public User getUser(String userName) {
 		User user = jdbcTemplate.queryForObject("SELECT  * FROM user"
 				+ "	where user.user_status=2" + "	and user.username=?",
-				new Object[] { userName }, new BeanPropertyRowMapper<User>(User.class));
+				new Object[] { userName },new int[] { Types.VARCHAR }, new BeanPropertyRowMapper<User>(User.class));
 		return user;
 	}
 

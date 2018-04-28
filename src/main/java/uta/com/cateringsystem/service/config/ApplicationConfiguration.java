@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "uta.com.cateringsystem.service")
-@PropertySource(value = { "classpath:/resources/application.properties" })
+@PropertySource(value = { "classpath:application.properties" })
 public class ApplicationConfiguration {
 	
 	@Autowired

@@ -3,6 +3,9 @@ package uta.com.cateringsystem.service.controller;
 
 
 
+import uta.com.cateringsystem.service.beans.User;
+import uta.com.cateringsystem.service.dao.impl.DbManagerImpl;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import uta.com.cateringsystem.service.beans.User;
-import uta.com.cateringsystem.service.dao.impl.DbManagerImpl;
 @RestController
 public class LoginController {
 	
@@ -41,7 +42,7 @@ public class LoginController {
 		
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public @ResponseBody Boolean performLogout(HttpServletRequest request, 
 	        HttpServletResponse response) {
 			
