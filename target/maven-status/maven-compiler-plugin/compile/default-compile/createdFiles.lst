@@ -1,0 +1,9 @@
+uta\com\cateringsystem\service\dao\DbManager.class
+uta\com\cateringsystem\service\beans\UserStatus.class
+uta\com\cateringsystem\service\beans\UserType.class
+uta\com\cateringsystem\service\config\ApplicationConfiguration.class
+uta\com\cateringsystem\service\controller\LoginController.class
+uta\com\cateringsystem\service\config\ApplicationInitializer.class
+uta\com\cateringsystem\service\beans\User.class
+uta\com\cateringsystem\service\App.class
+uta\com\cateringsystem\service\dao\impl\DbManagerImpl.class
