@@ -1,7 +1,7 @@
 package uta.com.cateringsystem.service.dao;
 
 import java.sql.Date;
-import uta.com.cateringsystem.service.beans.AvailableHallList;
+import uta.com.cateringsystem.service.beans.AvailableHall;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +35,9 @@ public interface DbManager {
 	public List<Event> getCatererEventSummaryList(Date startDate,Date endDate);
 	public List<Event> getUserEventSummaryList(Date startDate,Date endDate);
 	public List<Event> getAssignedEventSummaryList(Date startDate,Date endDate,int userId);
-	public List<AvailableHallList> searchAvailableHalls(Date fromDate,Date toDate, String startTime,String endTime );
+	public Map<Integer,AvailableHall> searchAvailableHalls(Date fromDate,Date toDate, String startTime,String endTime );
+	public Double performEventEstimation(Event event);
+	public  Map<Integer, AvailableHall> getCurrentSchedule(Date startDate, Date endDate);
 	
 
 	

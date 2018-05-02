@@ -2,7 +2,6 @@ C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsyst
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\Hall.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\dao\impl\DbManagerImpl.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\controller\UserController.java
-C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\AvailableHallList.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\config\ApplicationConfiguration.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\Event.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\User.java
@@ -11,6 +10,8 @@ C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsyst
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\controller\HelperController.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\dao\DbManager.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\UserType.java
+C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\util\UtaCateringServiceUtil.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\config\ApplicationInitializer.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\controller\LoginController.java
+C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\AvailableHall.java
 C:\Users\Prasad\workspace1\UtaCateringService\src\main\java\uta\com\cateringsystem\service\beans\EventStatus.java

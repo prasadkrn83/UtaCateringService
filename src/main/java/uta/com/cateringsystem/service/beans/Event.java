@@ -24,7 +24,18 @@ public class Event {
 	private Date modifiedDate;
 	private int eventStatus;
 	private int foodVenueId;
+	private int duration;
+	private String Mealformality;
+	private String alcoholicType;
 	
+	
+	
+	public int getDuration() {
+		return duration;
+	}
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
 	public int getEventId() {
 		return eventId;
 	}
@@ -120,6 +131,14 @@ public class Event {
 	}
 	public void setFoodVenueId(int foodVenueId) {
 		this.foodVenueId = foodVenueId;
+	}
+	public String getEventMealFormality() {
+		// TODO Auto-generated method stub
+		return Mealformality;
+	}
+	public String getAlcoholicType() {
+		// TODO Auto-generated method stub
+		return alcoholicType;
 	}
 	
 	

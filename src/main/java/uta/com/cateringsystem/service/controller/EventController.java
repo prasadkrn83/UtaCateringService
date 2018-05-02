@@ -1,5 +1,6 @@
 package uta.com.cateringsystem.service.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import uta.com.cateringsystem.service.beans.AvailableHall;
 import uta.com.cateringsystem.service.beans.Event;
 import uta.com.cateringsystem.service.beans.User;
 import uta.com.cateringsystem.service.dao.impl.DbManagerImpl;
+import uta.com.cateringsystem.service.util.UtaCateringServiceUtil;
 
 @RestController
 public class EventController {
@@ -121,11 +124,28 @@ public class EventController {
 		if (user == null) {
 			return null;
 		}
-		return performEventEstimation(event);
+		return dbManager.performEventEstimation(event);
+	}
+	
+	@RequestMapping("/searchavailablehall")
+	public @ResponseBody List<AvailableHall> searchavailablehall(@RequestParam(name = "startTimeStr") String startTimeStr,
+			@RequestParam(name = "endTimeStr") String endTimeStr,
+			@RequestParam(name = "frmDateStr") String frmDateStr,
+			@RequestParam(name = "toDateStr") String toDateStr,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return null;
+		}
+		
+		Date startDate = new Date(UtaCateringServiceUtil.getDateValue(frmDateStr));
+		Date endDate = new Date(UtaCateringServiceUtil.getDateValue(toDateStr));
+		return UtaCateringServiceUtil.computeAvailableHalls(dbManager.getHalls(), dbManager.getCurrentSchedule(startDate,endDate) , java.sql.Date.valueOf( frmDateStr), java.sql.Date.valueOf( toDateStr), 
+				startTimeStr, endTimeStr);
 	}
 
-	private Double performEventEstimation(Event event) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import uta.com.cateringsystem.service.beans.AvailableHall;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -20,12 +21,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Component;
 
-import uta.com.cateringsystem.service.beans.AvailableHallList;
 import uta.com.cateringsystem.service.beans.Event;
 import uta.com.cateringsystem.service.beans.EventStatus;
+import uta.com.cateringsystem.service.beans.Hall;
 import uta.com.cateringsystem.service.beans.User;
 import uta.com.cateringsystem.service.dao.DbManager;
-import uta.com.cateringsystem.service.beans.Hall;
 
 
 @Component
@@ -194,9 +194,26 @@ public class DbManagerImpl implements DbManager {
 	}
 
 	@Override
-	public List<AvailableHallList> searchAvailableHalls(Date fromDate, Date toDate, String startTime, String endTime) {
+	public Map<Integer,AvailableHall> searchAvailableHalls(Date fromDate, Date toDate, String startTime, String endTime) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String sql="SELECT hall_id,(start_time) starttime, max(end_time) endtime,name FROM event,hall "
+				+ "		where hall_id=id";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<Map>(){
+		    @Override
+		    public Map<Integer, AvailableHall> extractData(ResultSet rs) throws SQLException,DataAccessException {
+		        HashMap<Integer,AvailableHall> mapRet= new HashMap<Integer,AvailableHall>();
+		        while(rs.next()){
+		        	AvailableHall hall= new AvailableHall();
+		        	hall.setHallId(rs.getInt(1));
+		        	hall.setStartTime(rs.getString(2));
+		        	hall.setEndTime(rs.getString(3));
+		        	hall.setHallName(rs.getString(4));
+		            mapRet.put(rs.getInt("hall_id"),hall);
+		        }
+		        return mapRet;
+		    }
+		});
 	}
 
 	@Override
@@ -282,6 +299,90 @@ public class DbManagerImpl implements DbManager {
 		        return mapRet;
 		    }
 		});
+	}
+
+	@Override
+	public Map<Integer, AvailableHall> getCurrentSchedule(Date startDate, Date endDate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public Double performEventEstimation(Event event) {
+		// TODO Auto-generated method stub
+		
+	    String usergettext=event.getEventName();
+		String mealformality=event.getEventMealFormality();
+		double cost=0;
+        int no_of_hours = event.getDuration();
+		String alcoholictype =event.getAlcoholicType();
+		if(usergettext=="Mavericks")
+	    {
+	        if(mealformality =="Informal")
+	        { if(alcoholictype=="alcohol")
+	            cost=(100*15*no_of_hours*2);
+	            else
+	                cost=(100*no_of_hours*2);}
+	        else
+	        if(alcoholictype=="alcohol")
+	            cost=(100*15*1.5*no_of_hours*2);
+	       else
+	        cost=(100*1.5*no_of_hours*2);}
+	        else if(usergettext=="KC")
+	        {
+	            if(mealformality =="Informal")
+	            { if(alcoholictype=="alcohol")
+	                cost=(25*15*no_of_hours*2);
+	            else
+	                cost=(25*no_of_hours*2);}
+	        else
+	            if(alcoholictype=="alcohol")
+	                cost=(25*15*1.5*no_of_hours*2);
+	       else
+	            cost=(25*1.5*no_of_hours*2);}
+
+
+	            else if(usergettext=="Arlington")
+	    {
+	        if(mealformality =="Informal")
+	        { if(alcoholictype=="alcohol")
+	            cost=(50*15*no_of_hours*2);
+	            else
+	            cost=(50*no_of_hours*2);}
+	        else
+	        if(alcoholictype=="alcohol")
+	            cost=(50*15*1.5*no_of_hours*2);
+	       else
+	        cost=(50*1.5*no_of_hours*2);}
+
+
+	        else if(usergettext=="shard")
+	    {
+	        if(mealformality =="Informal")
+	        { if(alcoholictype=="alcohol")
+	            cost=(25*15*no_of_hours*2);
+	            else
+	            cost=(25*no_of_hours*2);}
+	        else
+	        if(alcoholictype=="alcohol")
+	            cost=(25*15*1.5*no_of_hours*2);
+	       else
+	        cost=(25*1.5*no_of_hours*2);}
+
+
+	        else if(usergettext=="Liberty")
+	    {
+	        if(mealformality =="Informal")
+	        { if(alcoholictype=="alcohol")
+	            cost=(75*15*no_of_hours*2);
+	            else
+	            cost=(75*no_of_hours*2);}
+	        else
+	        if(alcoholictype=="alcohol")
+	            cost=(75*15*1.5*no_of_hours*2);
+	       else
+	        cost=(75*1.5*no_of_hours*2);}
+		return cost;
 	}
 
 
